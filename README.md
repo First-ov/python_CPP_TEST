@@ -129,6 +129,36 @@ def zad3():
 
 ## Задание 4
 В этом задании выводится структура для работы с динамическими массивами
+Структуры C++:
+```
+    struct cpp_array_w_l{
+    int *arr;
+    int lenght;
+    };
+    struct cpp_array_of_array_w_l{
+    cpp_array_w_l *arr;
+    int lenght;
+    };
+```
+Классы Python:
+```
+class cpp_array_w_l(ctypes.Structure):
+    _fields_ = [('arr', ctypes.POINTER(ctypes.c_int)),
+                ('lenght', ctypes.c_int)]
+
+    def __init__(self, arr, lenght):
+        self.lenght = lenght
+        self.arr = arr
+
+
+class cpp_array_of_array_w_l(ctypes.Structure):
+    _fields_ = [('arr', ctypes.POINTER(cpp_array_w_l)),
+                ('lenght', ctypes.c_int)]
+
+    def __init__(self, arr, lenght):
+        self.lenght = lenght
+        self.arr = arr
+```
 
 Код C++:
 ```
